@@ -1,0 +1,60 @@
+You have 1 Notification
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:77: DeprecationWarning: executable_path has been deprecated, please pass in a Service object
+  driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, options=options)
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:81: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  username_textbox = driver.find_element_by_name("t_username")
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:84: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  password_textbox = driver.find_element_by_name("t_password")
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:87: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  login_button = driver.find_element_by_name("t_login")
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:91: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  alerts = driver.find_element_by_xpath("/html/body/div[1]/div[6]/a[6]/span")
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:77: DeprecationWarning: executable_path has been deprecated, please pass in a Service object
+  driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, options=options)
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:81: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  username_textbox = driver.find_element_by_name("t_username")
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:84: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  password_textbox = driver.find_element_by_name("t_password")
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:87: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  login_button = driver.find_element_by_name("t_login")
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:91: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  alerts = driver.find_element_by_xpath("/html/body/div[1]/div[6]/a[6]/span")
+Traceback (most recent call last):
+  File "/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py", line 117, in <module>
+    check_notif()
+  File "/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py", line 92, in check_notif
+    previous_notif = alerts.text()
+TypeError: 'str' object is not callable
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:77: DeprecationWarning: executable_path has been deprecated, please pass in a Service object
+  driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, options=options)
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:81: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  username_textbox = driver.find_element_by_name("t_username")
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:84: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  password_textbox = driver.find_element_by_name("t_password")
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:87: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  login_button = driver.find_element_by_name("t_login")
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:91: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  alerts = driver.find_element_by_xpath("/html/body/div[1]/div[6]/a[6]/span")
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:77: DeprecationWarning: executable_path has been deprecated, please pass in a Service object
+  driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, options=options)
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:81: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  username_textbox = driver.find_element_by_name("t_username")
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:84: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  password_textbox = driver.find_element_by_name("t_password")
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:87: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  login_button = driver.find_element_by_name("t_login")
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:91: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  alerts = driver.find_element_by_xpath("/html/body/div[1]/div[6]/a[6]/span")
+  File "/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py", line 100
+    break
+IndentationError: unexpected indent
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:77: DeprecationWarning: executable_path has been deprecated, please pass in a Service object
+  driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, options=options)
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:81: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  username_textbox = driver.find_element_by_name("t_username")
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:84: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  password_textbox = driver.find_element_by_name("t_password")
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:87: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  login_button = driver.find_element_by_name("t_login")
+/Users/AbhayS/Desktop/python projects/automation/LoginAutomation.py:91: DeprecationWarning: find_element_by_* commands are deprecated. Please use find_element() instead
+  alerts = driver.find_element_by_xpath("/html/body/div[1]/div[6]/a[6]/span")
