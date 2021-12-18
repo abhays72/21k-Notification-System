@@ -1,42 +1,3 @@
-# import requests
-
-# payload = {
-#     't_username': "210107045",
-#     't_password': 'Abhaysudhir21kschool',
-#     't_login': 'submit'
-# }
-# r = requests.post("https://www.21kschool.in/#portal/1/", data=payload)
-
-# print(r.text)
-
-# from bs4 import BeautifulSoup
-# from requests import get
-# from selenium import webdriver
-# import time
-# from selenium.webdriver.common.by import By
-# driver = webdriver.Chrome(executable_path="/Users/AbhayS/Downloads/chromedriver")
-# driver.get("https://www.21kschool.in/login?domain=1")
-# # r = get('https://www.21kschool.in/login?domain=1')
-# # soup = BeautifulSoup(r.content)
-# driver.find_element(By.XPATH, "//input[@type='text']").send_keys("Fowz")
-
-
-
-
-
-
-
-
-# from selenium import webdriver
-# from selenium.webdriver.common.by import By
-
-# driver = webdriver.Chrome(executable_path="/Users/AbhayS/Downloads/chromedriver")
-
-# driver.get("https://www.21kschool.in/login?domain=1")
-
-# driver.find_element(By.NAME, "t_username").send_keys("210107045")
-# driver.find_element(By.NAME, "t_password").send_keys("Abhaysudhir21kschool")
-
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from getpass import getpass
@@ -46,14 +7,10 @@ import schedule
 import time
 
 
-CHROMEDRIVER_PATH = '/Users/AbhayS/Downloads/chromedriver'
+CHROMEDRIVER_PATH = '[chrome driver path]'
 
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")
-# chrome_options = Options()
-# chrome_options.add_argument("--headless")
-# chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
-# chrome_options.binary_location = CHROME_PATH
 
 username = "[username here]"
 password = "[password here]"
@@ -115,51 +72,15 @@ def check_notif():
                 break
             else:
                 break
-            # else:
-                
-            #     os.system("""
-            #             osascript -e 'display notification "{}" with title "{}"'
-            #             """.format("You have NO Notifications", "21k School"))
-            #     return ("You have no notifications")
 
         # This error occurs when there are no notifs
         except NoSuchElementException:
             var = 0
             break
 
-
-# check_notif(username, password)
-
-# schedule.every(0.5).minutes.do(check_notif(username, password))
-# while True:
-    # schedule.run_pending()
-    # time.sleep(1)=
-    
-# def peepo():
-#     global var
-#     while True:
-#         if int(alert.text) > var:
-#             check_notif()
-#             var = int(alert.text)
-#             print("extra notif")
-#             break
-#         elif int(alert.text) == var:
-#             print("no new notifs")
-#             break
-        # else:
-        #     print("idk wtf happened")
-        #     break
-    
-
-# else:
-#     pass
-
 # Run check_notif() every 5 seconds
 schedule.every(5).seconds.do(check_notif)
-
 
 while 1:
     schedule.run_pending()
     time.sleep(1)
-
-# while the value of var is not equal to the current value give notif else dont give notif
