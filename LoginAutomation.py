@@ -4,14 +4,14 @@ import os
 import schedule
 import time
 
-
-CHROMEDRIVER_PATH = '[chrome driver path]'
+210107045
+CHROMEDRIVER_PATH = os.environ.get("DRIVER_PATH")
 
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")
 
-username = "[username here]"
-password = "[password here]"
+username = os.environ.get("USERNAME")
+password = os.environ.get("PASSWORD")
 
 
 var = 0
