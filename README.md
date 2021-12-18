@@ -10,4 +10,5 @@ Have a great day!
 ## Setup - MacOS:
 Install Required Packages: `pip install selenium os schedule time` <br>
 Clone this Repository: `git clone https://github.com/abhays72/automation.git` <br>
-Change Fields in `LoginAutomation.py` (Chrome Driver Path, Username, Password)
+Change Fields in `LoginAutomation.py` (Chrome Driver Path, Username, Password) <br>
+Start the background process: `nohup python3 [Path to LoginAutomation.py]`
