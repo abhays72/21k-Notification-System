@@ -1,6 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from getpass import getpass
 from selenium.common.exceptions import NoSuchElementException
 import os
 import schedule
