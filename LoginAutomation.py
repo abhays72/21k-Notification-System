@@ -46,19 +46,21 @@ import schedule
 import time
 
 
+CHROMEDRIVER_PATH = '/Users/AbhayS/Downloads/chromedriver'
+
+options = webdriver.ChromeOptions()
+options.add_argument("--headless")
+# chrome_options = Options()
+# chrome_options.add_argument("--headless")
+# chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
+# chrome_options.binary_location = CHROME_PATH
+
+username = "210107045"
+password = "Abhaysudhir21kschool"
+
+
+var = 0
 def check_notif():
-    CHROMEDRIVER_PATH = '/Users/AbhayS/Downloads/chromedriver'
-
-    options = webdriver.ChromeOptions()
-    options.add_argument("--headless")
-    # chrome_options = Options()
-    # chrome_options.add_argument("--headless")
-    # chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
-    # chrome_options.binary_location = CHROME_PATH
-
-    username = "210107045"
-    password = "Abhaysudhir21kschool"
-
     options = webdriver.ChromeOptions()
     options.headless = True
     options.add_argument(f'user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36')
@@ -85,41 +87,72 @@ def check_notif():
 
     login_button = driver.find_element_by_name("t_login")
     login_button.click()
-
-    try:
-        alerts = driver.find_element_by_xpath("/html/body/div[1]/div[6]/a[6]/span")
     
-        if int(alerts.text) >= 2:
-            print(f"You have {alerts.text} Notifications")
-            os.system("""
-                    osascript -e 'display notification "{}" with title "{}"'
-                    """.format(f"You have {alerts.text} Notifications", "21k School"))
-                    
-        elif int(alerts.text) == 1:
-            print(f'You have 1 Notification')
-            os.system("""
-                    osascript -e 'display notification "{}" with title "{}"'
-                    """.format("You have 1 Notification", "21k School"))
-                    
-        else:
-            os.system("""
-                    osascript -e 'display notification "{}" with title "{}"'
-                    """.format("You have NO Notifications", "21k School"))
+    while True:
+        try:
+            alert = driver.find_element_by_xpath("/html/body/div[1]/div[6]/a[6]/span")
+            global var
+            if int(alert.text) > var:
+                var = int(alert.text)
 
-    except NoSuchElementException:
-        print('yo')
-        pass
+                if int(alert.text) >= 2:
+                    
+                    os.system("""
+                            osascript -e 'display notification "{}" with title "{}"'
+                            """.format(f"You have {alert.text} Notifications", "21k School"))
+                    return (f"You have {alert.text} Notifications")
+                            
+                elif int(alert.text) == 1:
+                    os.system("""
+                            osascript -e 'display notification "{}" with title "{}"'
+                            """.format("You have 1 Notification", "21k School"))
+                    return (f'You have 1 Notification')
+            else:
+                print ("no u")
+                break
+            # else:
+                
+            #     os.system("""
+            #             osascript -e 'display notification "{}" with title "{}"'
+            #             """.format("You have NO Notifications", "21k School"))
+            #     return ("You have no notifications")
+
+        except NoSuchElementException:
+            var = 0
+            print('yo')
+
 
 # check_notif(username, password)
 
 # schedule.every(0.5).minutes.do(check_notif(username, password))
 # while True:
     # schedule.run_pending()
-    # time.sleep(1)
-check_notif()
+    # time.sleep(1)=
+    
+# def peepo():
+#     global var
+#     while True:
+#         if int(alert.text) > var:
+#             check_notif()
+#             var = int(alert.text)
+#             print("extra notif")
+#             break
+#         elif int(alert.text) == var:
+#             print("no new notifs")
+#             break
+        # else:
+        #     print("idk wtf happened")
+        #     break
+    
+
+# else:
+#     pass
 
 schedule.every(5).seconds.do(check_notif)
+
 
 while 1:
     schedule.run_pending()
     time.sleep(1)
+
+# while the value of var is not equal to the current value give notif else dont give notif
