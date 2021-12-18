@@ -107,6 +107,8 @@ def check_notif():
                             osascript -e 'display notification "{}" with title "{}"'
                             """.format("You have 1 Notification", "21k School"))
                     return (f'You have 1 Notification')
+            elif int(alert.text) < var:
+                break
             else:
                 print ("no u")
                 break
@@ -120,6 +122,7 @@ def check_notif():
         except NoSuchElementException:
             var = 0
             print('yo')
+            break
 
 
 # check_notif(username, password)
