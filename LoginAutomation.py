@@ -55,12 +55,13 @@ options.add_argument("--headless")
 # chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
 # chrome_options.binary_location = CHROME_PATH
 
-username = "210107045"
-password = "Abhaysudhir21kschool"
+username = "[username here]"
+password = "[password here]"
 
 
 var = 0
 def check_notif():
+    # setting up chromedriver -->
     options = webdriver.ChromeOptions()
     options.headless = True
     options.add_argument(f'user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 12_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36')
@@ -87,30 +88,32 @@ def check_notif():
 
     login_button = driver.find_element_by_name("t_login")
     login_button.click()
-    
+    # --> end of chrome driver setup
     while True:
         try:
+            # get the number of messages unread
             alert = driver.find_element_by_xpath("/html/body/div[1]/div[6]/a[6]/span")
             global var
             if int(alert.text) > var:
                 var = int(alert.text)
 
                 if int(alert.text) >= 2:
-                    
+                    # send notif
                     os.system("""
                             osascript -e 'display notification "{}" with title "{}"'
                             """.format(f"You have {alert.text} Notifications", "21k School"))
                     return (f"You have {alert.text} Notifications")
                             
                 elif int(alert.text) == 1:
+                    # send notif
                     os.system("""
                             osascript -e 'display notification "{}" with title "{}"'
                             """.format("You have 1 Notification", "21k School"))
                     return (f'You have 1 Notification')
+            # if the messages were read then just stop the program (starts again when schedule is called)
             elif int(alert.text) < var:
                 break
             else:
-                print ("no u")
                 break
             # else:
                 
@@ -119,9 +122,9 @@ def check_notif():
             #             """.format("You have NO Notifications", "21k School"))
             #     return ("You have no notifications")
 
+        # This error occurs when there are no notifs
         except NoSuchElementException:
             var = 0
-            print('yo')
             break
 
 
@@ -151,6 +154,7 @@ def check_notif():
 # else:
 #     pass
 
+# Run check_notif() every 5 seconds
 schedule.every(5).seconds.do(check_notif)
 
 
