@@ -12,7 +12,7 @@ options.add_argument("--headless")
 username = os.environ.get("USERNAME")
 password = os.environ.get("PASSWORD")
 
-
+# keep track of how many previous notifs
 var = 0
 def check_notif():
     # setting up chromedriver -->
