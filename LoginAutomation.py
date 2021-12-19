@@ -3,18 +3,23 @@ from selenium.common.exceptions import NoSuchElementException
 import os
 import schedule
 import time
+import winrt.windows.ui.notifications as notifications
+import winrt.windows.data.xml.dom as dom
 
-CHROMEDRIVER_PATH = os.environ.get("DRIVER_PATH")
+CHROMEDRIVER_PATH = "C:/Users/bluesinc/Downloads/chromedriver_win32/chromedriver.exe"
 
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")
 
-username = os.environ.get("USERNAME")
-password = os.environ.get("PASSWORD")
+
+username = "210107045"
+password = "Abhaysudhir21kschool"
 
 # keep track of how many previous notifs
 var = 0
 def check_notif():
+    nManager = notifications.ToastNotificationManager
+    notifier = nManager.create_toast_notifier();
     # setting up chromedriver -->
     options = webdriver.ChromeOptions()
     options.headless = True
@@ -53,16 +58,53 @@ def check_notif():
 
                 if int(alert.text) >= 2:
                     # send notif
-                    os.system("""
-                            osascript -e 'display notification "{}" with title "{}"'
-                            """.format(f"You have {alert.text} Notifications", "21k School"))
+                    tString = f"""
+                    <toast>
+                        <visual>
+                        <binding template='ToastGeneric'>
+                            <text>You have {alert.text} Messages</text>
+                            <text>From:</text>
+                        </binding>
+                        </visual>
+                        <actions>
+                        <action
+                            content="Delete"
+                            arguments="action=delete"/>
+                        <action
+                            content="Dismiss"
+                            arguments="action=dismiss"/>
+                        </actions>        
+                    </toast>
+                    """
+                    xDoc = dom.XmlDocument()
+                    xDoc.load_xml(tString)
+                    notifier.show(notifications.ToastNotification(xDoc))
+
                     return (f"You have {alert.text} Notifications")
                             
                 elif int(alert.text) == 1:
                     # send notif
-                    os.system("""
-                            osascript -e 'display notification "{}" with title "{}"'
-                            """.format("You have 1 Notification", "21k School"))
+                    tString = f"""
+                    <toast>
+                        <visual>
+                        <binding template='ToastGeneric'>
+                            <text>You have {alert.text} Message</text>
+                            <text>From:</text>
+                        </binding>
+                        </visual>
+                        <actions>
+                        <action
+                            content="Delete"
+                            arguments="action=delete"/>
+                        <action
+                            content="Dismiss"
+                            arguments="action=dismiss"/>
+                        </actions>        
+                    </toast>
+                    """
+                    xDoc = dom.XmlDocument()
+                    xDoc.load_xml(tString)
+                    notifier.show(notifications.ToastNotification(xDoc))
                     return (f'You have 1 Notification')
             # if the messages were read then just stop the program (starts again when schedule is called)
             elif int(alert.text) < var:
