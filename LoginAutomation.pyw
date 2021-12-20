@@ -5,8 +5,10 @@ import schedule
 import time
 import winrt.windows.ui.notifications as notifications
 import winrt.windows.data.xml.dom as dom
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 
-CHROMEDRIVER_PATH = "C:/Users/bluesinc/Downloads/chromedriver_win32/chromedriver.exe"
+CHROMEDRIVER_PATH = Service("C:/Users/bluesinc/Downloads/chromedriver_win32/chromedriver.exe")
 
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")
@@ -29,29 +31,30 @@ def check_notif():
     options.add_argument('--allow-running-insecure-content')
     options.add_argument("--disable-extensions")
     options.add_argument("--proxy-server='direct://'")
+    options.add_experimental_option('excludeSwitches', ['enable-logging'])
     options.add_argument("--proxy-bypass-list=*")
     options.add_argument("--start-maximized")
     options.add_argument('--disable-gpu')
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument('--no-sandbox')
 
-    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, options=options)
+    driver = webdriver.Chrome(service=CHROMEDRIVER_PATH, options=options, service_log_path='NUL')
     driver.get("https://21kschool.in/")
 
 
-    username_textbox = driver.find_element_by_name("t_username")
+    username_textbox = driver.find_element(By.NAME, "t_username")
     username_textbox.send_keys(username)
 
-    password_textbox = driver.find_element_by_name("t_password")
+    password_textbox = driver.find_element(By.NAME, "t_password")
     password_textbox.send_keys(password)
 
-    login_button = driver.find_element_by_name("t_login")
+    login_button = driver.find_element(By.NAME, "t_login")
     login_button.click()
     # --> end of chrome driver setup
     while True:
         try:
             # get the number of messages unread
-            alert = driver.find_element_by_xpath("/html/body/div[1]/div[6]/a[6]/span")
+            alert = driver.find_element(By.XPATH, "/html/body/div[1]/div[6]/a[6]/span")
             global var
             if int(alert.text) > var:
                 var = int(alert.text)
@@ -116,6 +119,7 @@ def check_notif():
         except NoSuchElementException:
             var = 0
             break
+            
 
 # Run check_notif() every 5 seconds
 schedule.every(5).seconds.do(check_notif)
