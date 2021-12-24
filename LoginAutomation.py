@@ -1,10 +1,13 @@
+# Made By Abhay Sudhir, abhaysudhir@icloud.com
+# Github Link: github.com/abhays72/automation
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.by import Service
+from selenium.webdriver.chrome.service import Service
 import os
 import schedule
 import time
+from plyer import notifications
 
 CHROMEDRIVER_PATH = Service(os.environ.get("DRIVER_PATH"))
 
@@ -36,7 +39,7 @@ def check_notif():
     options.add_argument('--no-sandbox')
 
     driver = webdriver.Chrome(
-        executable_path=CHROMEDRIVER_PATH, options=options)
+        service=CHROMEDRIVER_PATH, options=options)
     driver.get("https://21kschool.in/")
 
     username_textbox = driver.find_element(By.NAME, "t_username")
@@ -50,7 +53,7 @@ def check_notif():
     # --> end of chrome driver setup
     while True:
         try:
-            # get the number of messages unread
+            # get the number of messages unread (alert.text)
             alert = driver.find_element(By.XPATH, 
                 "/html/body/div[1]/div[6]/a[6]/span")
             global var
