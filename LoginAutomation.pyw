@@ -7,15 +7,16 @@ import winrt.windows.ui.notifications as notifications
 import winrt.windows.data.xml.dom as dom
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
+import os
 
-CHROMEDRIVER_PATH = Service("C:/Users/bluesinc/Downloads/chromedriver_win32/chromedriver.exe")
+CHROMEDRIVER_PATH = Service(os.environ.get("CHROME_DRIVER"))
 
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")
 
 
-username = "210107045"
-password = "Abhaysudhir21kschool"
+username = os.environ.get("USERNAME")
+password = os.environ.get('PASSWORD')
 
 # keep track of how many previous notifs
 var = 0
@@ -119,7 +120,6 @@ def check_notif():
         except NoSuchElementException:
             var = 0
             break
-            
 
 # Run check_notif() every 5 seconds
 schedule.every(5).seconds.do(check_notif)
