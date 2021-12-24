@@ -1,10 +1,12 @@
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.by import Service
 import os
 import schedule
 import time
 
-CHROMEDRIVER_PATH = os.environ.get("DRIVER_PATH")
+CHROMEDRIVER_PATH = Service(os.environ.get("DRIVER_PATH"))
 
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")
@@ -37,19 +39,19 @@ def check_notif():
         executable_path=CHROMEDRIVER_PATH, options=options)
     driver.get("https://21kschool.in/")
 
-    username_textbox = driver.find_element_by_name("t_username")
+    username_textbox = driver.find_element(By.NAME, "t_username")
     username_textbox.send_keys(username)
 
-    password_textbox = driver.find_element_by_name("t_password")
+    password_textbox = driver.find_element(By.NAME, "t_password")
     password_textbox.send_keys(password)
 
-    login_button = driver.find_element_by_name("t_login")
+    login_button = driver.find_element(By.NAME, "t_login")
     login_button.click()
     # --> end of chrome driver setup
     while True:
         try:
             # get the number of messages unread
-            alert = driver.find_element_by_xpath(
+            alert = driver.find_element(By.XPATH, 
                 "/html/body/div[1]/div[6]/a[6]/span")
             global var
             if int(alert.text) > var:
