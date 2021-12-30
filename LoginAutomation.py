@@ -53,8 +53,8 @@ def check_notif():
     while True:
         try:
             # get the number of messages unread (alert.text)
-            alert = driver.find_element(By.XPATH, 
-                "/html/body/div[1]/div[6]/a[6]/span")
+            alert = driver.find_element(By.XPATH,
+                                        "/html/body/div[1]/div[6]/a[6]/span")
             global var
             if int(alert.text) > var:
                 var = int(alert.text)
