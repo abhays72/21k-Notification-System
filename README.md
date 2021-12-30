@@ -9,6 +9,8 @@ Have a great day!
 
 ## Setup - MacOS:
 
+Install Brew: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"` <br>
+Install pip: `curl https://bootstrap.pypa.io/get-pip.py | python`
 Clone this Repository: `git clone https://github.com/abhays72/automation.git` <br>
 Install Required Packages: `pip install -r [Path to requirements.txt]` <br>
 Change Fields in `LoginAutomation.py` (Chrome Driver Path, Username, Password) <br>
