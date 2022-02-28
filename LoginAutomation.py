@@ -8,7 +8,7 @@ import os
 import schedule
 import time
 
-CHROMEDRIVER_PATH = Service(os.environ.get("DRIVER_PATH"))
+CHROMEDRIVER_PATH = Service("./chromedriver")
 
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")
@@ -39,7 +39,7 @@ def check_notif():
 
     driver = webdriver.Chrome(
         service=CHROMEDRIVER_PATH, options=options)
-    driver.get("https://21kschool.in/")
+    driver.get("https://www.21kschool.in/")
 
     username_textbox = driver.find_element(By.NAME, "t_username")
     username_textbox.send_keys(username)
@@ -64,7 +64,6 @@ def check_notif():
                     os.system("""
                             osascript -e 'display notification "{}" with title "{}" sound name "{}"'
                             """.format(f"You have {alert.text} Notifications", "21k School", "default"))
-
                     return (f"You have {alert.text} Notifications")
 
                 elif int(alert.text) == 1:
@@ -83,6 +82,7 @@ def check_notif():
         except NoSuchElementException:
             var = 0
             break
+    driver.quit()
 
 
 # Run check_notif() every 5 seconds
