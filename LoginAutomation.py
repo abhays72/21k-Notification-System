@@ -61,16 +61,16 @@ def check_notif():
 
                 if int(alert.text) >= 2:
                     # send notif
-                    os.system("""
-                            osascript -e 'display notification "{}" with title "{}" sound name "{}"'
-                            """.format(f"You have {alert.text} Notifications", "21k School", "default"))
+                    os.system(f"""
+                            osascript -e 'display notification "You have {alert.text} Notifications" with title "21k School"'
+                            """)
                     return (f"You have {alert.text} Notifications")
 
                 elif int(alert.text) == 1:
                     # send notif
                     os.system("""
-                            osascript -e 'display notification "{}" with title "{}"' sound name "{}"'
-                            """.format("You have 1 Notification", "21k School"))
+                            osascript -e 'display notification "You have 1 Notification" with title "21k Schoool"'
+                            """)
                     return (f'You have 1 Notification')
             # if the messages were read then just stop the program (starts again when schedule is called)
             elif int(alert.text) < var:
